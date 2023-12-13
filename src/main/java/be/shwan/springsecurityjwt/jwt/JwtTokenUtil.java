@@ -39,11 +39,12 @@ public class JwtTokenUtil {
 
     private String createSignature(String byteHeader, String bytePayload) throws NoSuchAlgorithmException, InvalidKeyException {
         Mac sha_HMAC = Mac.getInstance("HmacSHA256");
-        String secretKey = "secret";
+        String secretKey = "test";
         byte[] bytes = secretKey.getBytes(StandardCharsets.UTF_8);
-        SecretKeySpec secretKeySpec = new SecretKeySpec(bytes, "HmacSHA256");
-//        byte[] encodeSecretKey = encoder.encode(bytes);
-//        SecretKeySpec secretKeySpec = new SecretKeySpec(encodeSecretKey, "HmacSHA256");
+        byte[] encode = encoder.encode(bytes);
+        log.info("secretKey : {}", secretKey);
+        log.info("secret base64 encoded :{}", encoder.encodeToString(bytes));
+        SecretKeySpec secretKeySpec = new SecretKeySpec(encode, "HmacSHA256");
         sha_HMAC.init(secretKeySpec);
         String message = byteHeader + "." + bytePayload;
         byte[] encodeMessage = sha_HMAC.doFinal(message.getBytes(StandardCharsets.UTF_8));
