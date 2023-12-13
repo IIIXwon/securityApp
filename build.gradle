@@ -32,13 +32,13 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    // https://mvnrepository.com/artifact/org.testcontainers/testcontainers
     testImplementation group: 'org.testcontainers', name: 'testcontainers', version: '1.19.3'
-    // https://mvnrepository.com/artifact/org.testcontainers/junit-jupiter
     testImplementation group: 'org.testcontainers', name: 'junit-jupiter', version: '1.19.3'
-    // https://mvnrepository.com/artifact/org.testcontainers/postgresql
     testImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.19.3'
 }
 
